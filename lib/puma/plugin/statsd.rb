@@ -18,7 +18,7 @@ class StatsdConnector
 
   def send(metric_name:, value:, type:, tags: nil)
     data = "#{metric_name}:#{value}|#{STATSD_TYPES.fetch(type)}"
-    data = "#{data}|##{tags}" unless tags.nil?
+    data = "#{data}|#{tags}" unless tags.nil?
 
     if @socket_path
       socket = Socket.new(Socket::AF_UNIX, Socket::SOCK_DGRAM)
